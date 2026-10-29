@@ -1,0 +1,32 @@
+# UniversalCVI 2.0.0
+* Add Gen_AccClust function to work with any clustering results.
+* Update AccClust function to maximize clustering accuracy for datasets with known class labels using the Hungarian method for optimal one-to-one label matching.
+
+# UniversalCVI 1.4.0
+* Add SH to Hvalid and plot_idx
+
+# UniversalCVI 1.3.0
+* Add methods hclust_ward.D and hclust_war.D2 to all hard CVIs 
+
+# UniversalCVI 1.2.0
+* Add Silhouette index
+
+# UniversalCVI 1.1.2
+* Edit the function AccClust.
+
+# UniversalCVI 1.1.1
+* Edit the formula of KWON2 index in both KWON2 and FzzyCVIs. 
+* Edit the function AccClust. 
+
+# UniversalCVI 1.1.0
+* Add an argument 'sampling' indicating the undersampling proportion of data to be used. This argument is intended for handling a large dataset.
+* Fix errors in the manual script files.
+
+# UniversalCVI 1.0.1
+
+* Update the citation file.
+* Fix errors in the manual script files.
+
+# UniversalCVI 1.0.0
+
+* Initial CRAN submission.
