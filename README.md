@@ -1,4 +1,4 @@
-# UniversalCVI <a href="https://cran.r-project.org/web/packages/UniversalCVI/index.html"><img src="Logo/UniversalCVI_Halloween.png" align="right" height="200" alt="ggplot2 website" /></a>
+# UniversalCVI <a href="https://cran.r-project.org/web/packages/UniversalCVI/index.html"><img src="Logo/UniversalCVI_Halloween.png" align="right" height="300" alt="ggplot2 website" /></a>
 
 <!-- badges: start -->
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/UniversalCVI)](https://cran.r-project.org/package=UniversalCVI)
