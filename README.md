@@ -1,5 +1,11 @@
-# UniversalCVI
-  **UnversalCVI** package is an effective tool for evaluating clustering results by several cluster validity indices. It has functions to compute several indices as listed below for a user specified range of numbers of clusters and compare them in grid plots. The package is compatible with six clustering methods including K-means, fuzzy C-means, EM clustering, and hierarchical clustering (single, average, and complete linkage). Moreover, the UniversalCVI package has a function that computes the accuracy of clustering results when the true classes are known.
+# UniversalCVI <a href="https://cran.r-project.org/web/packages/UniversalCVI/index.html"><img src="Logo/UniversalCVI_logofinal-01.png" align="right" height="200" alt="ggplot2 website" /></a>
+
+<!-- badges: start -->
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/UniversalCVI)](https://cran.r-project.org/package=UniversalCVI)
+[![downloads](https://cranlogs.r-pkg.org/badges/UniversalCVI)](https://github.com/r-hub/cranlogs.app)
+<!-- badges: end -->
+
+  **UniversalCVI** package is an effective tool for evaluating clustering results by several cluster validity indices. It has functions to compute several indices as listed below for a user specified range of numbers of clusters and compare them in grid plots. The package is compatible with six clustering methods including K-means, fuzzy C-means, EM clustering, and hierarchical clustering (single, average, and complete linkage). Moreover, the UniversalCVI package has a function that computes the accuracy of clustering results when the true classes are known.
 
 UniversalCVI requires the use of the two packages:  [`mclust`](https://CRAN.R-project.org/package=mclust) and [`e1071`](https://CRAN.R-project.org/package=e1071) which are for performing the fuzzy C-means (FCM) and EM algorithms, respectively.
 
