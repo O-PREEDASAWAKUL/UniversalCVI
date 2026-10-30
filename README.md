@@ -5,9 +5,9 @@
 [![downloads](https://cranlogs.r-pkg.org/badges/UniversalCVI)](https://github.com/r-hub/cranlogs.app)
 <!-- badges: end -->
 
-  **UniversalCVI** package is an effective tool for evaluating clustering results by several cluster validity indices. It has functions to compute several indices as listed below for a user specified range of numbers of clusters and compare them in grid plots. The package is compatible with six clustering methods including K-means, fuzzy C-means, EM clustering, and hierarchical clustering (single, average, and complete linkage). Moreover, the UniversalCVI package has a function that computes the accuracy of clustering results when the true classes are known.
+**UniversalCVI** package is an effective tool for evaluating clustering results by several cluster validity indices. It has functions to compute several indices as listed below for a user specified range of numbers of clusters and compare them in grid plots. The package is compatible with eight clustering methods including K-means, fuzzy C-means (FCM), expectation-maximization (EM) clustering, and hierarchical clustering (single, average, complete, ward.D, and ward.D2 linkage). Moreover, the UniversalCVI package has a function that computes the accuracy of clustering results when the true classes are known, including a new function that supports clustering results obtained from any clustering algorithms.
 
-UniversalCVI requires the use of the two packages:  [`mclust`](https://CRAN.R-project.org/package=mclust) and [`e1071`](https://CRAN.R-project.org/package=e1071) which are for performing the fuzzy C-means (FCM) and EM algorithms, respectively.
+UniversalCVI requires three packages: [`mclust`](https://CRAN.R-project.org/package=mclust) and [`e1071`](https://CRAN.R-project.org/package=e1071) for performing the EM and FCM clustering, respectively, and [`clue`](https://CRAN.R-project.org/package=clue) for solving the linear sum assignment problem using the Hungarian method to optimally match predicted cluster labels with true classes labels when calculating clustering accuracy.
 
 In addition to the evaluation tools, the UniversalCVI package also includes 17 simulated datasets intially used for testing and comparing cluster validity indices in several perspectives written in Wiroonsri(2024) and Wiroonsri and Preedasawakul(2023). 
 
@@ -19,17 +19,10 @@ Dunn's index, Calinski–Harabasz index, Davies–Bouldin’s index, Point biser
 
 **Fuzzy clustering:**
 
-Xie–Beni index, KWON index, KWON2 index, TANG index , HF index, Wu–Li index, Pakhira–Bandyopadhyay–Maulik (for fuzzy clustering) index, KPBM index, Correlation Cluster Validity index, Generalized C index, Wiroonsri and Preedasawakul index.
+Xie–Beni index, KWON index, KWON2 index, TANG index , HF index, Wu–Li index, Pakhira–Bandyopadhyay–Maulik (for fuzzy clustering) index, KPBM index, Correlation Cluster Validity index, Generalized C index, and Wiroonsri and Preedasawakul index.
 
 
-## Installation
-
-If you have not already installed `mclust` and `e1071` in your local system, install these package as following first: 
-
-``` r
-install.packages(c('e1071','mclust'))
-```
-Install `UniversalCVI` package
+## Install `UniversalCVI` package
 
 ``` r
 install.packages('UniversalCVI')
@@ -41,6 +34,7 @@ Load R package into R working space
 library(UniversalCVI)
 library(e1071)
 library(mclust)
+library(clue)
 })
 ```
 
@@ -48,6 +42,12 @@ library(mclust)
 
 
 ### Check accuracy of clustering results when the true classes are known
+
+Our package provides two functions for evaluating clustering accuracy when true class label are known. Both functions use the Hungarian algorithm to find the optimal one-to-one matching between predicted clusters and true classes.
+
+#### 1. `AccClust` 
+
+The `AccClust()` function evaluates clustering accuracy using K-means, Fuzzy C-means, and expectation-maximization (EM) clustering. 
 
 ``` r
 
@@ -64,6 +64,27 @@ x = D1_data
 AccClust(x, label.names = "label",algorithm = "FCM", fzm = 2,
   scale = TRUE, nstart = 20,iter = 100)
 ```
+
+#### 2. `Gen_AccClust` (Compute accuracy for any clustering results)
+
+The new `Gen_AccClust()` function computes accuracy directly from predicted cluster assignments and true class labels. It can be used with results for any clustering algorithm.
+
+``` r
+
+### Use a dataset in this package
+
+x = R1_data
+features = x[,-3]
+true_labels = x[,3]
+
+## Run K-means clustering
+  
+km = kmeans(features, centers = length(unique(true_labels)), nstart = 20)
+
+# Check accuracy of a clustering result
+Gen_AccClust(cluster = km$cluster, label = true_labels)
+```
+
 
 ### Compute hard cluster validity indices
 Using Hvalid to compute all index in function for a clustering result from 2 to 15
